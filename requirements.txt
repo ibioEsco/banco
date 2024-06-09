@@ -1,0 +1,4 @@
+jsonschema
+pytz
+requests
+boto3

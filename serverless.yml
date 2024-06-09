@@ -1,0 +1,27 @@
+service: lambda-python-ibio-gomez
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: us-east-1
+  deploymentBucket:
+    name: ai-technical-test-ibio-escobar
+
+plugins:
+  - serverless-python-requirements
+
+
+functions:
+  prueba:
+    handler: src/lambdas/handler.lambda_handler
+    maximumRetryAttempts: 1
+    environment:
+      typeRequest: post
+    events:
+      - s3:
+          bucket: ai-technical-test-ibio-escobar
+          event: s3:ObjectCreated:*
+
+ 
+
